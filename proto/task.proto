@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+service TaskService {
+    rpc AddTask(AddTaskRequest) returns (AddTaskResponse);
+    rpc GetTaskStatus(SendTaskStatus) returns (Void);
+}
+
+message AddTaskRequest {
+    Task task = 1;
+}
+
+message AddTaskResponse {
+    int32 id = 1;
+}
+
+message SendTaskStatus {
+    int32 id = 1;
+
+}
+
+message Void {}
+
+message Task {
+    string url = 1;
+    int32 delay = 2;
+    string json = 3;
+}
+
+message TaskStatus {
+    enum Status {
+        RUNNING = 0;
+        STOP = 1;
+    }
+    int32 id = 1;
+    Status status = 2;
+    string url = 3;
+}
