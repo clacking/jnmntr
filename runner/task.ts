@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { Webhook } from './webhook';
+import { Webhook, HookMessage } from './webhook';
 
 export enum Status {
     Running, Stop
@@ -12,7 +12,7 @@ export type TaskSetting = {
     expectval: string;
     proxies?: string[];
     once: boolean; // if find stop
-    webhook: Webhook;
+    webhook: Webhook[];
 }
 
 export class Task {
@@ -42,7 +42,8 @@ export class Task {
     checkjson(json: Object) {
         if(json.hasOwnProperty(this.taskSet.endpoint)) {
             if(json[this.taskSet.jsonpoint] === this.taskSet.expectval) {
-                this.taskSet.webhook.send();
+                const whMessage: HookMessage = { message: 'message' }
+                this.taskSet.webhook.forEach(t => t.send(whMessage));
                 if(this.taskSet.once) this.stopTask();
             }
         }

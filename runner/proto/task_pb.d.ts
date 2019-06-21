@@ -98,6 +98,14 @@ export class Task extends jspb.Message {
     getJson(): string;
     setJson(value: string): void;
 
+    getJsonval(): string;
+    setJsonval(value: string): void;
+
+    clearWebhookList(): void;
+    getWebhookList(): Array<WebHook>;
+    setWebhookList(value: Array<WebHook>): void;
+    addWebhook(value?: WebHook, index?: number): WebHook;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Task.AsObject;
@@ -114,7 +122,40 @@ export namespace Task {
         url: string,
         delay: number,
         json: string,
+        jsonval: string,
+        webhookList: Array<WebHook.AsObject>,
     }
+}
+
+export class WebHook extends jspb.Message { 
+    getPlatform(): WebHook.Platform;
+    setPlatform(value: WebHook.Platform): void;
+
+    getUrl(): string;
+    setUrl(value: string): void;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): WebHook.AsObject;
+    static toObject(includeInstance: boolean, msg: WebHook): WebHook.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: WebHook, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): WebHook;
+    static deserializeBinaryFromReader(message: WebHook, reader: jspb.BinaryReader): WebHook;
+}
+
+export namespace WebHook {
+    export type AsObject = {
+        platform: WebHook.Platform,
+        url: string,
+    }
+
+    export enum Platform {
+    SLACK = 0,
+    DISCORD = 1,
+    }
+
 }
 
 export class TaskStatus extends jspb.Message { 

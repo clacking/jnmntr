@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "runner": "ts-node runner/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@nestjs/typeorm": "^6.1.2",
+    "@types/node": "^12.0.8",
+    "@types/node-fetch": "^2.3.7",
     "google-protobuf": "^3.8.0",
     "grpc": "^1.21.1",
     "grpc-tools": "^1.7.3",

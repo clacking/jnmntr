@@ -24,6 +24,17 @@ message Task {
     string url = 1;
     int32 delay = 2;
     string json = 3;
+    string jsonval = 4;
+    repeated WebHook webhook = 5;
+}
+
+message WebHook {
+    enum Platform {
+        Slack = 0;
+        Discord  = 1;
+    }
+    Platform platform = 1;
+    string url = 2;
 }
 
 message TaskStatus {
